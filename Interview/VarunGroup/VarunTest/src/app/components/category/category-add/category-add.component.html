@@ -1,0 +1,100 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-header mb-4">{{ title }}</h5>
+    <form [formGroup]="CategoryForm">
+      <div>
+        <div class="mb-3 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label"
+            >Category Name</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="staticEmail"
+              formControlName="categoryName"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                CategoryForm.controls['categoryName'].touched &&
+                CategoryForm.controls['categoryName'].invalid
+              "
+              >Please enter category</span
+            >
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="" class="col-sm-2 col-form-label"
+            >Category Description</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id=""
+              formControlName="categoryDescription"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                CategoryForm.controls['categoryDescription'].touched &&
+                CategoryForm.controls['categoryDescription'].invalid
+              "
+              >Please enter Description</span
+            >
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label"
+            >Category Group</label
+          >
+          <div class="col-sm-10">
+            <select
+              class="form-control"
+              id="power"
+              formControlName="categoryGrpId"
+            >
+              <option
+                *ngFor="let group of categoryGroup"
+                [value]="group.categoryGrpId"
+              >
+                {{ group.categoryGrpName }}
+              </option>
+            </select>
+            <span
+              class="text-danger"
+              *ngIf="
+                CategoryForm.controls['categoryGrpId'].touched &&
+                CategoryForm.controls['categoryGrpId'].invalid
+              "
+              >Please Select category Group</span
+            >
+          </div>
+        </div>
+        <div class="form-check mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+            formControlName="isActive"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            IsActive
+          </label>
+        </div>
+        <div>
+          <button class="btn btn-primary" (click)="submit()" *ngIf="!isEdit">
+            Submit
+          </button>
+          <button class="btn btn-secondary" (click)="submit()" *ngIf="isEdit">
+            Update
+          </button>
+          |
+          <button class="btn btn-primary" routerLink="/list">Back</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
